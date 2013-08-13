@@ -5,9 +5,9 @@ from random import normalvariate, choice
 from time import sleep
 
 def randomsleep():
-    seconds=normalvariate(9, 3)
-    if seconds>0:
-        sleep(seconds)
+    seconds = normalvariate(10, 20)
+    seconds = min(max(2, seconds), 60)
+    sleep(seconds)
 
 def driver_setup():
     desired_capabilities = webdriver.DesiredCapabilities.FIREFOX #CHROME
@@ -21,6 +21,7 @@ def main():
     while True:
         choice(driver.find_elements_by_xpath('//a')).click()
         randomsleep()
+        print(u'Loaded ' + d.current_url)
 
 if __name__ == '__main__':
     main()
