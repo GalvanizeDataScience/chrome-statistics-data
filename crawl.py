@@ -15,11 +15,19 @@ def driver_setup():
     driver = webdriver.Remote(desired_capabilities=desired_capabilities,command_executor="http://localhost:4444/wd/hub")
     return driver
 
+def visible(a):
+    return a.is_displayed() and a.is_enabled()
+
 def main():
+    SEED = 'http://blog.zipfianacademy.com/post/46864003608/a-practical-intro-to-data-science'
     driver = driver_setup()
-    driver.get('http://zipfianacademy.com')
+    driver.get(SEED)
     while True:
-        choice(driver.find_elements_by_xpath('//a')).click()
+        anchors = filter(visible, driver.find_elements_by_xpath('//a'))
+        if len(anchors) > 0:
+            choice(anchors).click()
+        else:
+            driver.get(SEED)
         randomsleep()
         print(u'Loaded ' + driver.current_url)
 
