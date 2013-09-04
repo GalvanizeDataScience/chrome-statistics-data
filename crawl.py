@@ -21,7 +21,7 @@ def main():
     while True:
         choice(driver.find_elements_by_xpath('//a')).click()
         randomsleep()
-        print(u'Loaded ' + d.current_url)
+        print(u'Loaded ' + driver.current_url)
 
 if __name__ == '__main__':
     main()
