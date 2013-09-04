@@ -12,7 +12,11 @@ def randomsleep():
 def driver_setup():
     desired_capabilities = webdriver.DesiredCapabilities.CHROME
     desired_capabilities['name'] = 'Chrome database sprint data collection'
-    driver = webdriver.Remote(desired_capabilities=desired_capabilities,command_executor="http://localhost:4444/wd/hub")
+    driver = webdriver.Remote(
+        desired_capabilities=desired_capabilities,
+        command_executor="http://localhost:4444/wd/hub",
+        profile = webdriver.FirefoxProfile(profile_directory = 'George')
+    )
     return driver
 
 def visible(a):
