@@ -10,7 +10,7 @@ def randomsleep():
     sleep(seconds)
 
 def driver_setup():
-    desired_capabilities = webdriver.DesiredCapabilities.FIREFOX #CHROME
+    desired_capabilities = webdriver.DesiredCapabilities.CHROME
     desired_capabilities['name'] = 'Chrome database sprint data collection'
     driver = webdriver.Remote(desired_capabilities=desired_capabilities,command_executor="http://localhost:4444/wd/hub")
     return driver
